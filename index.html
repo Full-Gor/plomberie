@@ -556,7 +556,9 @@
         </div>
     </div>
 </footer>
-
+<button id="scroll-to-top" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700 focus:outline-none z-50">
+    <i class="fas fa-arrow-up"></i>
+</button>
     <!-- Script pour le menu mobile -->
     <script>
         const menuToggle = document.getElementById('menu-toggle');
@@ -630,6 +632,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+ // Script pour le bouton de retour en haut
+ const scrollToTopButton = document.getElementById('scroll-to-top');
+    
+    // Afficher ou masquer le bouton selon la position de défilement
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollToTopButton.classList.remove('opacity-0', 'invisible');
+            scrollToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            scrollToTopButton.classList.remove('opacity-100', 'visible');
+            scrollToTopButton.classList.add('opacity-0', 'invisible');
+        }
+    });
+    
+    // Action de clic sur le bouton
+    scrollToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
     </script>
+    
 </body>
 </html>
